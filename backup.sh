@@ -6,6 +6,8 @@ cp ~/.zshrc ~/git/dotfiles/
 cp ~/.vimrc ~/git/dotfiles/
 #backup visual studio code
 cp -r ~/.vscode ~/git/dotfiles/
+#apply .gitignore_global
+
 
 #merge backed up configs to master branch
 date=date

@@ -6,3 +6,7 @@ cp ~/git/dotfiles/.zshrc ~/
 cp ~/git/dotfiles/.vimrc ~/
 #restore visual studio code config from repo
 cp -r ~/git/dotfiles/.vscode ~/
+
+
+#apply .gitignore_global
+git config --global core.excludesfile ~/.gitignore_global
