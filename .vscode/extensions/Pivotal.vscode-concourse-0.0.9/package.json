@@ -1,0 +1,99 @@
+{
+	"name": "vscode-concourse",
+	"displayName": "Concourse CI Pipeline Editor",
+	"description": "Provides validation and content assist for Concourse CI pipeline and task configuration yml files",
+	"icon": "icon.png",
+	"version": "0.0.9",
+	"publisher": "Pivotal",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/spring-projects/sts4.git"
+	},
+	"license": "EPL-1.0",
+	"engines": {
+		"npm": "^3.0.0",
+		"vscode": "^1.8.0"
+	},
+	"categories": [
+		"Languages",
+		"Linters"
+	],
+	"keywords": [
+		"yaml",
+		"concourse",
+		"pipeline.yml"
+	],
+	"activationEvents": [
+		"onLanguage:concourse-pipeline-yaml",
+		"onLanguage:concourse-task-yaml"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "mycommand.sayHello",
+				"title": "Say Hello"
+			}
+		],
+		"languages": [
+			{
+				"id": "concourse-pipeline-yaml",
+				"aliases": [
+					"Concourse Pipeline"
+				],
+				"filenamePatterns": [
+					"*pipeline*.yml"
+				],
+				"firstLine": "^#(\\s)*pipeline(\\s)*",
+				"configuration": "./yaml-support/language-configuration.json"
+			},
+			{
+				"id": "concourse-task-yaml",
+				"aliases": [
+					"Concourse Task"
+				],
+				"filenamePatterns": [
+					"*task.yml",
+					"**/tasks/*.yml"
+				],
+				"firstLine": "^#(\\s)*task(\\s)*",
+				"configuration": "./yaml-support/language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "concourse-pipeline-yaml",
+				"scopeName": "source.yaml",
+				"path": "./yaml-support/yaml.tmLanguage"
+			},
+			{
+				"language": "concourse-task-yaml",
+				"scopeName": "source.yaml",
+				"path": "./yaml-support/yaml.tmLanguage"
+			}
+		]
+	},
+	"main": "./out/lib/Main",
+	"scripts": {
+		"prepublish": "tsc -p .",
+		"clean": "rm -fr node_modules out *.vsix",
+		"compile": "tsc -watch -p ./",
+		"preinstall": "./scripts/preinstall.sh",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"vsce-package": "vsce package"
+	},
+	"dependencies": {
+		"vscode-languageclient": "^3.2.x",
+		"commons-vscode": "^0.0.6"
+	},
+	"devDependencies": {
+		"vsce": "^1.17.0",
+		"typescript": "^2.3.0",
+		"@types/node": "^6.0.68",
+		"vscode": "^1.1.0"
+	},
+	"__metadata": {
+		"id": "8e8d8573-d69a-4c7b-a951-d72a266a5822",
+		"publisherId": "dc949c7c-2584-42c6-811d-74527b53f191",
+		"publisherDisplayName": "Pivotal"
+	}
+}
